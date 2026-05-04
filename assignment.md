@@ -1,5 +1,7 @@
 # **Project Assignment: "The Property Analyst"**
 
+(04-MAY-2026): Will save the SQL script and upload as asset.
+
 **Goal:** Identify the most "undervalued" town.
 
 1. Find the average resale\_price per town.  
