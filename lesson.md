@@ -57,6 +57,8 @@ Open DbGate and create a new connection to `db/unit-1-4.db`.
 > | remaining_lease | Text | Remaining lease |
 > | resale_price | Numeric ($) | Resale transaction price |
 
+(04-May-2026) Lecture: Know what the database is about, what the columns are for, what they mean, what do users need to be aware of etc. Shared between users. 
+
 **Examples:**
 
 See all columns:
@@ -104,10 +106,33 @@ ORDER BY
 
 **Exercise:**
 - Select any 3 columns from the table.
+  (04-May-2026)Attempt:
+  ```sql
+  SELECT
+    town, floor_area_sqm, resale_price
+  FROM
+    resale_flat_prices_2017
+  ```
 - Select flats from highest to lowest resale price in Punggol.
+  (04-May-2026)Attempt:
+  ```sql
+   SELECT
+     *
+   FROM
+     resale_flat_prices_2017
+   WHERE
+     town = 'Punggol'
+   ORDER BY
+     resale_price DESC;
+   ```
 
 > **What's Your Query?**
 > "If our table had 100 columns and a million rows, what would happen to our computer's memory if we always used `SELECT *`?"
+  (04-May-2026)Attempt: Overload the memory and result in either lag or "shutdown".
+  (04-May-2026)Lecture:
+  i. Double: 8 bytes, VARCHAR ranges 20 - 200bytes
+  ii. Assuming average a column takes 50 bytes, 100 cols = 5kB. 1M rows = 5 GB. With system's additional processing memory, would take more than 5GB.
+  iii. "Code smell"
 
 ---
 
@@ -222,7 +247,9 @@ FROM
 ### 💬 Reflection
 
 - Do SQL keywords need to be capitalized? Why do we use uppercase for them anyway?
+  (04-MAY-2026): We can distinguish the clause vs the code. usually apps and editors preset them as caps as well.
 - How would a real estate app like PropertyGuru use these filters when a user moves a slider on their screen?
+  (04-MAY-2026): Dev have to safeguard user inputs. When user does the filtering, SQL will capture the values and sent to the database to get the response. the JSON response will be delivered to the application level.
 
 ---
 
@@ -513,7 +540,9 @@ FROM
 ### 💬 Reflection
 
 - What does the `::` mean in DuckDB/PostgreSQL? How does it relate to `CAST()`?
+  (04-MAY-2026): Shortcut
 - Why is it important to standardize date formats when merging data from two different countries?
+  (04-MAY-2026): the order of MM and DD or even YYYY may be different.
 
 ---
 
