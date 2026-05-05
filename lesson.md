@@ -133,6 +133,7 @@ ORDER BY
   i. Double: 8 bytes, VARCHAR ranges 20 - 200bytes
   ii. Assuming average a column takes 50 bytes, 100 cols = 5kB. 1M rows = 5 GB. With system's additional processing memory, would take more than 5GB.
   iii. "Code smell"
+  iv. If in the event data is to be shared, using * may inadvertently include sensitive information that is not shareable.
 
 ---
 
